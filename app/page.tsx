@@ -15,8 +15,8 @@ export default function HomePage() {
               Simple tooling for better clinical research experiences.
             </h2>
             <p className="text-sm text-slate-600">
-              ClinRS AI helps research teams organize key workflows and supports clear,
-              patient-friendly communication across studies.
+              ClinRS AI helps research teams by providing access to technical expertise and tooling to empower them to devlier better clinical outcomes. 
+              We enable enable clinical staff to focus on patient care by connecting systems and developing custom solutions tailored to their needs.
             </p>
             <div className="flex flex-col gap-3 pt-2 sm:flex-row sm:items-center">
               <a
@@ -24,12 +24,6 @@ export default function HomePage() {
                 className="inline-flex w-full items-center justify-center rounded-lg bg-sky-600 px-4 py-2 text-sm font-medium text-white hover:bg-sky-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:ring-offset-2 sm:w-auto"
               >
                 Get in touch
-              </a>
-              <a
-                href={`mailto:${contactEmail}`}
-                className="inline-flex w-full items-center justify-center rounded-lg border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-700 shadow-sm hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 sm:w-auto"
-              >
-                Email us
               </a>
             </div>
           </div>
@@ -54,24 +48,23 @@ export default function HomePage() {
         <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
           <article className="rounded-xl border border-slate-200 bg-white/70 p-5 shadow-sm">
             <div className="border-t-4 border-t-sky-400 pt-3">
-              <h4 className="text-sm font-semibold text-slate-900">Custom design</h4>
+              <h4 className="text-sm font-semibold text-slate-900">Patient-Centric Design</h4>
               <p className="mt-2 text-sm text-slate-600">
-                Patient Centric Design: clear layouts, readable information, and gentle guidance built around what
-                patients need most.
+                Clear layouts, readable information, intuitive design, and gentle guidance built around what patients need most.
               </p>
             </div>
             <ul className="mt-4 space-y-2 text-sm text-slate-600">
               <li className="flex gap-2">
                 <span className="mt-2 h-1.5 w-1.5 rounded-full bg-sky-600" aria-hidden="true" />
-                Patient-first content hierarchy
+                Enable patients to access their own data
               </li>
               <li className="flex gap-2">
                 <span className="mt-2 h-1.5 w-1.5 rounded-full bg-sky-600" aria-hidden="true" />
-                Consistent tone & spacing
+                Enable patients to provide feedback to researchers
               </li>
               <li className="flex gap-2">
                 <span className="mt-2 h-1.5 w-1.5 rounded-full bg-sky-600" aria-hidden="true" />
-                Fewer steps to complete actions
+                Simplify communication between patients and researchers
               </li>
             </ul>
           </article>
@@ -80,22 +73,21 @@ export default function HomePage() {
             <div className="border-t-4 border-t-emerald-400 pt-3">
               <h4 className="text-sm font-semibold text-slate-900">Security at its core</h4>
               <p className="mt-2 text-sm text-slate-600">
-                Secure workflows by default—so sensitive information stays protected as teams collaborate across
-                studies.
+                Security and compliance are core pillars of our design and development process.
               </p>
             </div>
             <ul className="mt-4 space-y-2 text-sm text-slate-600">
               <li className="flex gap-2">
                 <span className="mt-2 h-1.5 w-1.5 rounded-full bg-emerald-600" aria-hidden="true" />
-                Least-privilege access patterns
+                Data can be stored within existing systems
               </li>
               <li className="flex gap-2">
                 <span className="mt-2 h-1.5 w-1.5 rounded-full bg-emerald-600" aria-hidden="true" />
-                Audit-friendly activity tracking
+                Role based security and least-privilege access patterns
               </li>
               <li className="flex gap-2">
                 <span className="mt-2 h-1.5 w-1.5 rounded-full bg-emerald-600" aria-hidden="true" />
-                Clear security boundaries
+                Integration with Single Sign-On (SSO) and other authentication providers
               </li>
             </ul>
           </article>
@@ -104,22 +96,21 @@ export default function HomePage() {
             <div className="border-t-4 border-t-indigo-400 pt-3">
               <h4 className="text-sm font-semibold text-slate-900">AI Powered Productivity</h4>
               <p className="mt-2 text-sm text-slate-600">
-                AI Powered Productivity: faster research operations with assistance that reduces manual effort while
-                keeping humans in control.
+                By leaning on AI productivity tools, we can provide enterprise grade software solutions at a fraction of the cost.
               </p>
             </div>
             <ul className="mt-4 space-y-2 text-sm text-slate-600">
               <li className="flex gap-2">
                 <span className="mt-2 h-1.5 w-1.5 rounded-full bg-indigo-600" aria-hidden="true" />
-                Assistive summaries & checklists
+                AI assisted development and deployment
               </li>
               <li className="flex gap-2">
                 <span className="mt-2 h-1.5 w-1.5 rounded-full bg-indigo-600" aria-hidden="true" />
-                Faster triage of patient requests
+                AI empowered software solutions
               </li>
               <li className="flex gap-2">
                 <span className="mt-2 h-1.5 w-1.5 rounded-full bg-indigo-600" aria-hidden="true" />
-                High-speed performance for critical workflows
+                Enterprise grade infrastructure and scalability
               </li>
             </ul>
           </article>
