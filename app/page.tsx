@@ -15,8 +15,8 @@ export default function HomePage() {
               Simple tooling for better clinical research experiences.
             </h2>
             <p className="text-sm text-slate-600">
-              ClinRS AI helps research teams by providing access to technical expertise and tooling to empower them to devlier better clinical outcomes. 
-              We enable enable clinical staff to focus on patient care by connecting systems and developing custom solutions tailored to their needs.
+              ClinRS AI helps research teams by providing access to technical expertise and tooling to empower them to deliver better clinical outcomes.
+              We enable clinical staff to focus on patient care by connecting systems and developing custom solutions tailored to their needs.
             </p>
             <div className="flex flex-col gap-3 pt-2 sm:flex-row sm:items-center">
               <a
