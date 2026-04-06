@@ -8,60 +8,58 @@ export default function HomePage() {
       <BannerSection />
 
       <SpotlightSection
-        id="patient-centric"
+        id="digital-toolkit"
         align="bottom"
         accent="sky"
-        background="url('/images/doc-sitting-desk-gemini.png') center/cover no-repeat"
-        title="Patient-Centric Design"
-        description="Clear layouts, readable information, intuitive design, and gentle guidance built around what patients need most."
+        background="url('/images/patient-centric-design-gemini.png') center/cover no-repeat"
+        title="The Digital Toolkit"
+        description="A growing SaaS platform purpose-built for clinical research sites — giving teams and patients the tools they need in one place."
         columns={[
           {
-            title: "Own Your Data",
+            title: "Patient Portal",
             description:
-              "Enable patients to access and understand their own research data at any time.",
+              "A patient-facing portal for secure access to study information, upcoming visits, communication with research staff, and self-reported feedback.",
           },
           {
-            title: "Direct Feedback",
+            title: "Patient Data Management",
             description:
-              "Enable patients to provide meaningful feedback directly to researchers.",
+              "Streamlined tools for managing patient data within CTMS solutions — reducing manual work and improving data accuracy across the site.",
           },
           {
-            title: "Simplified Communication",
+            title: "Secure by Design",
             description:
-              "Streamline communication between patients and research teams.",
+              "Built with role-based access, least-privilege principles, and integration with existing identity providers so your data stays protected.",
           },
         ]}
       />
 
       <SpotlightSection
-        id="security"
+        id="custom-development"
         align="right"
         accent="emerald"
-        background="url('/images/pic03.jpg') center/cover no-repeat"
-        title="Security at its Core"
-        description="Security and compliance are core pillars of our design and development process."
+        background="url('/images/security-core-gemini.png') center/cover no-repeat"
+        title="Custom Development"
+        description="Need something built to fit your site's exact workflow? We design and develop custom software for clinical research — from standalone tools to full system integrations."
         bullets={[
-          { text: "Data can be stored within existing systems" },
-          {
-            text: "Role-based security and least-privilege access patterns",
-          },
-          {
-            text: "Integration with Single Sign-On (SSO) and other authentication providers",
-          },
+          { text: "Standalone applications for your existing infrastructure" },
+          { text: "Workflow tools that improve day-to-day research operations" },
+          { text: "Integration software to connect disparate systems" },
+          { text: "Deployable within the Digital Toolkit or self-hosted" },
         ]}
       />
 
       <SpotlightSection
-        id="ai-productivity"
+        id="consulting"
         align="left"
         accent="indigo"
-        background="url('/images/pic04.jpg') center/cover no-repeat"
-        title="AI Powered Productivity"
-        description="By leaning on AI productivity tools, we can provide enterprise grade software solutions at a fraction of the cost."
+        background="url('/images/ai-productivity-gemini.png') center/cover no-repeat"
+        title="Technology & Software Consulting"
+        description="Tap into 20 years of SaaS development and IT experience in health sciences — from strategic planning to hands-on implementation guidance."
         bullets={[
-          { text: "AI assisted development and deployment" },
-          { text: "AI empowered software solutions" },
-          { text: "Enterprise grade infrastructure and scalability" },
+          { text: "Technology assessment and roadmap planning" },
+          { text: "Software architecture and platform strategy" },
+          { text: "Vendor evaluation and integration advisory" },
+          { text: "Deep expertise in security and compliance" },
         ]}
       />
 

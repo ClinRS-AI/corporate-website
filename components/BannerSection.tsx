@@ -44,12 +44,11 @@ export default function BannerSection() {
 
         <h1 className="text-3xl sm:text-4xl font-light text-slate-100 tracking-wide leading-snug mb-4">
           Simple tooling for better
-          <br className="hidden sm:block" /> clinical research experiences.
+          <br className="hidden sm:block" /> clinical research experiences
         </h1>
 
         <p className="text-slate-300 font-light mb-8 text-base leading-relaxed">
-          ClinRS AI supports clinical research teams with streamlined tooling
-          and better patient experiences.
+          ClinRS AI empowers health sciences teams using a digital platform to deliver high impact tools, custom software development, and technology consulting.
         </p>
 
         <Link
@@ -62,7 +61,7 @@ export default function BannerSection() {
 
       {/* Scroll indicator */}
       <motion.a
-        href="#patient-centric"
+        href="#digital-toolkit"
         aria-label="Scroll to next section"
         className="absolute bottom-8 left-1/2 -translate-x-1/2 text-slate-400 hover:text-sky-400 transition-colors duration-200"
         animate={{ y: [0, 8, 0] }}
