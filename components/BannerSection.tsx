@@ -31,12 +31,12 @@ export default function BannerSection() {
       >
         {/* Logo in circular container for contrast */}
         <div className="flex justify-center mb-8">
-          <div className="rounded-full bg-white p-6 shadow-2xl ring-1 ring-white/20">
+          <div className="rounded-full bg-gradient-to-br from-white to-sky-50 p-10 shadow-2xl ring-1 ring-sky-100/60">
             <Image
               src="/logo.svg"
               alt="ClinRS AI logo"
-              width={200}
-              height={172}
+              width={220}
+              height={190}
               priority
             />
           </div>
