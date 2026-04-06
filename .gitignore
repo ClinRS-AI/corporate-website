@@ -3,6 +3,11 @@ out/
 node_modules/
 .DS_Store
 
+# Windows / WSL junk (thumbnails, folder prefs, download zone metadata)
+Thumbs.db
+Desktop.ini
+*Zone.Identifier
+
 # Local env files
 .env
 .env.local
@@ -11,3 +16,20 @@ node_modules/
 # Logs
 *.log
 
+# TypeScript incremental build cache
+*.tsbuildinfo
+
+# Claude Code — local overrides (machine-specific; may include secrets)
+.claude/settings.local.json
+
+# Vercel CLI (project link, local project settings)
+.vercel
+
+# Tooling caches
+.eslintcache
+
+# Test coverage (when you add a test runner)
+coverage/
+
+# Local TLS / key material (never commit real secrets)
+*.pem
