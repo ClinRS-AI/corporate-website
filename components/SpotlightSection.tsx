@@ -18,7 +18,11 @@ interface Bullet {
 type SpotlightSectionProps = {
   id: string;
   accent: Accent;
-  /** CSS background value — gradient or url() for a real image */
+  /**
+   * CSS background value.
+   * For images: "url('/images/pic02.jpg') center/cover no-repeat"
+   * For gradients: "linear-gradient(...)"
+   */
   background: string;
   title: string;
   description: string;
@@ -56,17 +60,20 @@ export default function SpotlightSection({
     target: sectionRef,
     offset: ["start end", "end start"],
   });
-  // Subtle parallax: background moves at 15% of scroll speed
-  const bgY = useTransform(scrollYProgress, [0, 1], ["-12%", "12%"]);
 
-  const isInView = useInView(contentRef, { once: true, margin: "-80px" });
+  // Parallax: background drifts at ~20% of scroll speed
+  const bgY = useTransform(scrollYProgress, [0, 1], ["-15%", "15%"]);
+  // Subtle scale pulse as section passes through view
+  const bgScale = useTransform(scrollYProgress, [0, 0.5, 1], [1.06, 1.0, 1.06]);
+
+  const isInView = useInView(contentRef, { once: true, margin: "-60px" });
 
   const initialAnim =
     align === "right"
-      ? { opacity: 0, x: 40 }
+      ? { opacity: 0, x: 70 }
       : align === "left"
-        ? { opacity: 0, x: -40 }
-        : { opacity: 0, y: 30 };
+        ? { opacity: 0, x: -70 }
+        : { opacity: 0, y: 40 };
 
   const animateAnim =
     align === "bottom" ? { opacity: 1, y: 0 } : { opacity: 1, x: 0 };
@@ -76,11 +83,11 @@ export default function SpotlightSection({
       {/* Parallax background */}
       <motion.div
         aria-hidden="true"
-        style={{ y: bgY, background }}
-        className="absolute inset-[-15%]"
+        style={{ y: bgY, scale: bgScale, background }}
+        className="absolute inset-[-20%]"
       />
       {/* Dark overlay */}
-      <div aria-hidden="true" className="absolute inset-0 bg-slate-950/55" />
+      <div aria-hidden="true" className="absolute inset-0 bg-slate-950/50" />
 
       {/* Bottom-aligned: full-width panel with column grid */}
       {align === "bottom" && columns ? (
@@ -88,8 +95,8 @@ export default function SpotlightSection({
           ref={contentRef}
           initial={initialAnim}
           animate={isInView ? animateAnim : {}}
-          transition={{ duration: 0.7, ease: "easeOut" }}
-          className="absolute bottom-0 left-0 right-0 bg-slate-900/85 backdrop-blur-sm border-t border-slate-700/40 px-8 py-10"
+          transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
+          className="absolute bottom-0 left-0 right-0 bg-slate-900/90 backdrop-blur-sm border-t border-slate-700/40 px-8 py-10"
         >
           <div className={`border-l-4 pl-5 mb-6 ${accentBorder[accent]}`}>
             <h2 className="text-2xl font-light text-slate-100">{title}</h2>
@@ -110,12 +117,16 @@ export default function SpotlightSection({
           ref={contentRef}
           initial={initialAnim}
           animate={isInView ? animateAnim : {}}
-          transition={{ duration: 0.7, ease: "easeOut" }}
-          className={`absolute top-0 bottom-0 ${align === "right" ? "right-0" : "left-0"} w-full sm:w-2/5 bg-slate-900/85 backdrop-blur-sm flex items-center px-8 py-20`}
+          transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
+          className={`absolute top-0 bottom-0 ${
+            align === "right" ? "right-0" : "left-0"
+          } w-full sm:w-2/5 bg-slate-900/90 backdrop-blur-sm flex items-center px-8 py-20`}
         >
           <div className={`border-l-4 pl-5 max-w-xs ${accentBorder[accent]}`}>
             <h2 className="text-2xl font-light text-slate-100 mb-3">{title}</h2>
-            <p className="text-sm text-slate-400 font-light mb-4 leading-relaxed">{description}</p>
+            <p className="text-sm text-slate-400 font-light mb-4 leading-relaxed">
+              {description}
+            </p>
             {bullets && bullets.length > 0 && (
               <ul className="space-y-2">
                 {bullets.map((b) => (

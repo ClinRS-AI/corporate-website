@@ -7,12 +7,17 @@ import { motion } from "framer-motion";
 export default function BannerSection() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background */}
+      {/* Background image with dark overlay */}
+      <div
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: "url('/images/banner.jpg')" }}
+        aria-hidden="true"
+      />
       <div
         className="absolute inset-0"
         style={{
           background:
-            "radial-gradient(ellipse at 50% 0%, rgba(14,165,233,0.18) 0%, transparent 60%), linear-gradient(to bottom, #020617, #0f172a)",
+            "linear-gradient(to bottom, rgba(2,6,23,0.65) 0%, rgba(2,6,23,0.55) 50%, rgba(2,6,23,0.75) 100%)",
         }}
         aria-hidden="true"
       />
@@ -24,29 +29,32 @@ export default function BannerSection() {
         transition={{ duration: 0.9, ease: "easeOut" }}
         className="relative z-10 text-center px-6 max-w-2xl"
       >
+        {/* Logo in circular container for contrast */}
         <div className="flex justify-center mb-8">
-          <Image
-            src="/logo.svg"
-            alt="ClinRS AI logo"
-            width={280}
-            height={240}
-            priority
-            className="drop-shadow-lg"
-          />
+          <div className="rounded-full bg-white p-6 shadow-2xl ring-1 ring-white/20">
+            <Image
+              src="/logo.svg"
+              alt="ClinRS AI logo"
+              width={200}
+              height={172}
+              priority
+            />
+          </div>
         </div>
 
         <h1 className="text-3xl sm:text-4xl font-light text-slate-100 tracking-wide leading-snug mb-4">
-          Simple tooling for better<br className="hidden sm:block" /> clinical research experiences.
+          Simple tooling for better
+          <br className="hidden sm:block" /> clinical research experiences.
         </h1>
 
-        <p className="text-slate-400 font-light mb-8 text-base leading-relaxed">
+        <p className="text-slate-300 font-light mb-8 text-base leading-relaxed">
           ClinRS AI supports clinical research teams with streamlined tooling
           and better patient experiences.
         </p>
 
         <Link
           href="#contact"
-          className="inline-flex items-center gap-2 px-6 py-3 rounded border border-sky-600 text-sky-400 hover:bg-sky-600 hover:text-white transition-colors duration-200 font-light"
+          className="inline-flex items-center gap-2 px-6 py-3 rounded border border-sky-500 text-sky-300 hover:bg-sky-600 hover:text-white hover:border-sky-600 transition-colors duration-200 font-light"
         >
           Get in touch
         </Link>
@@ -56,7 +64,7 @@ export default function BannerSection() {
       <motion.a
         href="#patient-centric"
         aria-label="Scroll to next section"
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-slate-600 hover:text-sky-400 transition-colors duration-200"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-slate-400 hover:text-sky-400 transition-colors duration-200"
         animate={{ y: [0, 8, 0] }}
         transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
       >

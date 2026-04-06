@@ -11,7 +11,7 @@ export default function HomePage() {
         id="patient-centric"
         align="bottom"
         accent="sky"
-        background="linear-gradient(135deg, #0c4a6e 0%, #020617 50%, #0c4a6e 100%)"
+        background="url('/images/pic02.jpg') center/cover no-repeat"
         title="Patient-Centric Design"
         description="Clear layouts, readable information, intuitive design, and gentle guidance built around what patients need most."
         columns={[
@@ -37,7 +37,7 @@ export default function HomePage() {
         id="security"
         align="right"
         accent="emerald"
-        background="linear-gradient(135deg, #020617 0%, #022c22 50%, #020617 100%)"
+        background="url('/images/pic03.jpg') center/cover no-repeat"
         title="Security at its Core"
         description="Security and compliance are core pillars of our design and development process."
         bullets={[
@@ -55,7 +55,7 @@ export default function HomePage() {
         id="ai-productivity"
         align="left"
         accent="indigo"
-        background="linear-gradient(135deg, #1e1b4b 0%, #020617 50%, #1e1b4b 100%)"
+        background="url('/images/pic04.jpg') center/cover no-repeat"
         title="AI Powered Productivity"
         description="By leaning on AI productivity tools, we can provide enterprise grade software solutions at a fraction of the cost."
         bullets={[
