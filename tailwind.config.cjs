@@ -7,7 +7,11 @@ module.exports = {
     path.join(__dirname, "components", "**", "*.{ts,tsx}"),
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        sans: ["var(--font-roboto)", "system-ui", "sans-serif"],
+      },
+    },
   },
   plugins: [],
 };

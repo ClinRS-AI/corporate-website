@@ -1,0 +1,69 @@
+"use client";
+
+import Image from "next/image";
+import Link from "next/link";
+import { motion } from "framer-motion";
+
+export default function BannerSection() {
+  return (
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* Background */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background:
+            "radial-gradient(ellipse at 50% 0%, rgba(14,165,233,0.18) 0%, transparent 60%), linear-gradient(to bottom, #020617, #0f172a)",
+        }}
+        aria-hidden="true"
+      />
+
+      {/* Content */}
+      <motion.div
+        initial={{ opacity: 0, y: 24 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.9, ease: "easeOut" }}
+        className="relative z-10 text-center px-6 max-w-2xl"
+      >
+        <div className="flex justify-center mb-8">
+          <Image
+            src="/logo.svg"
+            alt="ClinRS AI logo"
+            width={280}
+            height={240}
+            priority
+            className="drop-shadow-lg"
+          />
+        </div>
+
+        <h1 className="text-3xl sm:text-4xl font-light text-slate-100 tracking-wide leading-snug mb-4">
+          Simple tooling for better<br className="hidden sm:block" /> clinical research experiences.
+        </h1>
+
+        <p className="text-slate-400 font-light mb-8 text-base leading-relaxed">
+          ClinRS AI supports clinical research teams with streamlined tooling
+          and better patient experiences.
+        </p>
+
+        <Link
+          href="#contact"
+          className="inline-flex items-center gap-2 px-6 py-3 rounded border border-sky-600 text-sky-400 hover:bg-sky-600 hover:text-white transition-colors duration-200 font-light"
+        >
+          Get in touch
+        </Link>
+      </motion.div>
+
+      {/* Scroll indicator */}
+      <motion.a
+        href="#patient-centric"
+        aria-label="Scroll to next section"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-slate-600 hover:text-sky-400 transition-colors duration-200"
+        animate={{ y: [0, 8, 0] }}
+        transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+      >
+        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 9l-7 7-7-7" />
+        </svg>
+      </motion.a>
+    </section>
+  );
+}
