@@ -11,7 +11,7 @@ export default function HomePage() {
         id="patient-centric"
         align="bottom"
         accent="sky"
-        background="url('/images/pic02.jpg') center/cover no-repeat"
+        background="url('/images/doc-sitting-desk-gemini.png') center/cover no-repeat"
         title="Patient-Centric Design"
         description="Clear layouts, readable information, intuitive design, and gentle guidance built around what patients need most."
         columns={[
