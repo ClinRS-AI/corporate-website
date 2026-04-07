@@ -6,7 +6,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ```bash
 npm run dev        # Start dev server on port 3001
-npm run build      # Production build
+npm run build      # Static export to out/ (output: export; for GitHub Pages)
+npm run start      # Preview out/ locally (after build; static server port 3001)
 npm run lint       # ESLint (next config)
 npm run typecheck  # TypeScript type check (no emit)
 ```

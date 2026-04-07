@@ -45,8 +45,8 @@ The dev server listens on **port 3001** ([http://localhost:3001](http://localhos
 | Command | Purpose |
 |---------|---------|
 | `npm run dev` | Development server with hot reload |
-| `npm run build` | Production build |
-| `npm start` | Run the production build locally |
+| `npm run build` | Static export (`output: 'export'`) into `out/` (for GitHub Pages, etc.) |
+| `npm start` | Preview the `out/` folder locally (static server on port 3001; run after `npm run build`) |
 | `npm run lint` | ESLint across the project |
 | `npm run typecheck` | TypeScript check (`tsc --noEmit`) |
 
@@ -55,6 +55,18 @@ The dev server listens on **port 3001** ([http://localhost:3001](http://localhos
 [`.github/workflows/gitleaks.yml`](.github/workflows/gitleaks.yml) runs **[Gitleaks](https://github.com/gitleaks/gitleaks)** on push, pull requests, a weekly schedule, and manual dispatch to reduce the risk of committing secrets.
 
 **GitHub Organizations:** Gitleaks-Action expects a free org license key in the `GITLEAKS_LICENSE` repository or organization secret. [Request a key](https://forms.gle/8e8xPF72nS3TiY7G9) and see the comments in the workflow file for details. Personal-account repositories do not require that secret.
+
+### GitHub Pages
+
+[`.github/workflows/deploy-github-pages.yml`](.github/workflows/deploy-github-pages.yml) runs **`npm ci`**, **`npm run build`** (static output in `out/`), then deploys with the official **Pages** actions.
+
+**One-time setup in the repository:**
+
+1. **Settings → Pages → Build and deployment** — set **Source** to **GitHub Actions** (not “Deploy from a branch”).
+2. Push to **`main`** or **`develop`** (or run the workflow manually under **Actions**) to trigger a deploy.
+3. After the first successful run, open **Settings → Pages** again for the public URL. Add a **Custom domain** (e.g. `clinrs.ai`) and enable **HTTPS** when DNS is ready.
+
+The site is built for the **domain root** (no `basePath`); `metadataBase` in `app/layout.tsx` should stay `https://clinrs.ai` for production SEO.
 
 ## Configuration and secrets
 
