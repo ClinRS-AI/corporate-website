@@ -19,6 +19,10 @@ export const metadata: Metadata = {
   description:
     "ClinRS AI supports clinical research teams with streamlined tooling and better patient experiences.",
   metadataBase: new URL("https://www.clinrs.ai"),
+  icons: {
+    icon: [{ url: "/images/clinrs-favicon.png", type: "image/png" }],
+    apple: "/images/clinrs-favicon.png",
+  },
   openGraph: {
     type: "website",
     title: "ClinRS AI",
