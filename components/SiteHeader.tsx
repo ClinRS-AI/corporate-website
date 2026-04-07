@@ -1,11 +1,26 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 
 const navLinks = [{ label: "Home", href: "/" }];
+
+/** SVG wordmark: use native img so Next/Image wrapper does not fight SVG sizing (dev warning). */
+function WordmarkLogo({ priority }: { priority?: boolean }) {
+  return (
+    // eslint-disable-next-line @next/next/no-img-element -- static SVG; next/image triggers false aspect warnings for SVGs
+    <img
+      src="/images/clinrsai-name-logo-light.svg"
+      alt="ClinRS AI"
+      width={120}
+      height={30}
+      decoding="async"
+      className="block h-auto w-[120px] max-w-full"
+      {...(priority ? { fetchPriority: "high" as const } : {})}
+    />
+  );
+}
 
 export default function SiteHeader() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -14,13 +29,7 @@ export default function SiteHeader() {
     <>
       <header className="fixed top-0 left-0 right-0 z-40 flex items-center justify-between px-6 py-2 bg-slate-950/80 backdrop-blur-sm border-b border-slate-800/50">
         <Link href="/" className="flex items-center hover:opacity-80 transition-opacity duration-200">
-          <Image
-            src="/images/clinrsai-name-logo-light.svg"
-            alt="ClinRS AI"
-            width={120}
-            height={30}
-            priority
-          />
+          <WordmarkLogo priority />
         </Link>
 
         {/* Desktop nav */}
@@ -82,12 +91,7 @@ export default function SiteHeader() {
                 </svg>
               </button>
 
-              <Image
-                src="/images/clinrsai-name-logo-light.svg"
-                alt="ClinRS AI"
-                width={120}
-                height={30}
-              />
+              <WordmarkLogo />
 
               <div className="flex flex-col gap-4">
                 {navLinks.map((link) => (
