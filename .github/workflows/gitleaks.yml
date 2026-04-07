@@ -1,0 +1,41 @@
+# Scans the repo for leaked secrets (API keys, tokens, private keys, etc.).
+# Runs on every push/PR, weekly, and on demand. Fail the job if anything is found.
+#
+# Organization repos: Gitleaks-Action requires a free org license (not needed for
+# personal-account repos). Request a key: https://forms.gle/8e8xPF72nS3TiY7G9
+# Then add org or repo secret GITLEAKS_LICENSE (see comments on the Run step).
+#
+# Complement with GitHub secret scanning (public repos) and Dependabot as needed.
+
+name: Secret scan (Gitleaks)
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+  schedule:
+    # Weekly — catches issues merged outside PRs or from local history
+    - cron: "0 12 * * 1"
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  gitleaks:
+    name: Gitleaks
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      # For GitHub Organizations: create secret GITLEAKS_LICENSE (repository or
+      # organization Settings → Secrets and variables → Actions). Use the license
+      # string emailed after you submit https://forms.gle/8e8xPF72nS3TiY7G9
+      - name: Run Gitleaks
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITLEAKS_LICENSE: ${{ secrets.GITLEAKS_LICENSE }}

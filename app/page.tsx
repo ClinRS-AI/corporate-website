@@ -23,7 +23,7 @@ export default function HomePage() {
           {
             title: "Patient Data Management",
             description:
-              "Streamlined tools for managing patient data within CTMS solutions — reducing manual work and improving data accuracy across the site.",
+              "Streamlined tools for managing patient data within CTMS solutions — reducing manual work and improving data accuracy across your organization.",
           },
           {
             title: "Secure by Design",
