@@ -1,6 +1,6 @@
 # ClinRS AI — Corporate website
 
-Public marketing site for [ClinRS AI](https://clinrs.ai): clinical research tooling, patient-centric design, security, and AI-assisted delivery. Built with the [Next.js App Router](https://nextjs.org/docs/app).
+Public marketing site for [ClinRS AI](https://www.clinrs.ai): clinical research tooling, patient-centric design, security, and AI-assisted delivery. Built with the [Next.js App Router](https://nextjs.org/docs/app).
 
 ## Tech stack
 
@@ -64,11 +64,13 @@ The dev server listens on **port 3001** ([http://localhost:3001](http://localhos
 
 1. **Settings → Pages → Build and deployment** — set **Source** to **GitHub Actions** (not “Deploy from a branch”).
 2. Push to **`main`** (or run the workflow manually under **Actions**) to trigger a deploy.
-3. After the first successful run, open **Settings → Pages** again for the public URL. Add a **Custom domain** (e.g. `clinrs.ai`) and enable **HTTPS** when DNS is ready.
+3. After the first successful run, open **Settings → Pages** again for the public URL. Add your **Custom domain** (e.g. `www.clinrs.ai`) and enable **HTTPS** when DNS is ready.
 
-**URLs:** A **project** site’s default URL is `https://<org>.github.io/<repo>/`. The workflow sets `BASE_PATH=/<repo>` so assets resolve under that path (see `next.config.mjs` and `lib/assetPath.ts`). **You do not need `clinrs.ai` for the GitHub.io URL to work** after redeploy.
+**Pathing:** The deploy workflow builds **without** `BASE_PATH` so assets resolve at the site root (`/`, `/images/...`, `/_next/...`). That matches GitHub Pages when the site is served on a **custom domain** (e.g. `https://www.clinrs.ai/`).
 
-For an **apex custom domain** (e.g. `https://clinrs.ai/` only), remove the `BASE_PATH` env from the workflow’s build step and redeploy so the export uses no base path. Keep `metadataBase` in `app/layout.tsx` aligned with your public URL for SEO.
+The default **project** URL `https://<org>.github.io/<repo>/` expects files under `/<repo>/`. If you need to preview that URL locally, run `BASE_PATH=/<repo> npm run build` and serve `out/` (see `next.config.mjs` and `lib/assetPath.ts`). Do not set `BASE_PATH` in CI when the public site is the custom domain.
+
+Keep **`metadataBase`** in `app/layout.tsx` aligned with your canonical hostname (www vs apex) for SEO and Open Graph URLs.
 
 ## Configuration and secrets
 

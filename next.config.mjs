@@ -1,7 +1,7 @@
 /**
- * GitHub project Pages URL is https://<org>.github.io/<repo>/ — asset paths must
- * include `/<repo>`. Set BASE_PATH=/your-repo when building for that host.
- * For a custom domain at the apex (e.g. https://clinrs.ai/), omit BASE_PATH or set "".
+ * Production (custom domain on GitHub Pages): leave BASE_PATH unset so assets load from `/`.
+ * Optional: set BASE_PATH=/your-repo only when testing the project-site URL
+ * `https://<org>.github.io/<repo>/` (same export cannot serve both roots).
  */
 function basePathFromEnv() {
   const raw = process.env.BASE_PATH;
