@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import Link from "next/link";
+
+import { assetPath } from "../lib/assetPath";
 import { AnimatePresence, motion } from "framer-motion";
 
 const navLinks = [{ label: "Home", href: "/" }];
@@ -11,7 +13,7 @@ function WordmarkLogo({ priority }: { priority?: boolean }) {
   return (
     // eslint-disable-next-line @next/next/no-img-element -- static SVG; next/image triggers false aspect warnings for SVGs
     <img
-      src="/images/clinrsai-name-logo-light.svg"
+      src={assetPath("/images/clinrsai-name-logo-light.svg")}
       alt="ClinRS AI"
       width={120}
       height={30}

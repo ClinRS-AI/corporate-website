@@ -2,7 +2,7 @@
 #
 # One-time repo setup:
 # 1. Settings → Pages → Build and deployment → Source: GitHub Actions
-# 2. After first successful run, Settings → Pages → Custom domain: clinrs.ai (optional)
+# 2. After first successful run, optional: Settings → Pages → Custom domain (see README for BASE_PATH).
 #
 # Requires: next.config.mjs with output: "export" (and images.unoptimized for next/image).
 
@@ -38,8 +38,12 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      # Project Pages URL is https://<org>.github.io/<repo>/ — assets must use basePath /repo.
+      # When the site is only served at an apex custom domain (e.g. clinrs.ai), remove BASE_PATH below.
       - name: Build static site
         run: npm run build
+        env:
+          BASE_PATH: /${{ github.event.repository.name }}
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

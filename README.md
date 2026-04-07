@@ -66,7 +66,9 @@ The dev server listens on **port 3001** ([http://localhost:3001](http://localhos
 2. Push to **`main`** (or run the workflow manually under **Actions**) to trigger a deploy.
 3. After the first successful run, open **Settings → Pages** again for the public URL. Add a **Custom domain** (e.g. `clinrs.ai`) and enable **HTTPS** when DNS is ready.
 
-The site is built for the **domain root** (no `basePath`); `metadataBase` in `app/layout.tsx` should stay `https://clinrs.ai` for production SEO.
+**URLs:** A **project** site’s default URL is `https://<org>.github.io/<repo>/`. The workflow sets `BASE_PATH=/<repo>` so assets resolve under that path (see `next.config.mjs` and `lib/assetPath.ts`). **You do not need `clinrs.ai` for the GitHub.io URL to work** after redeploy.
+
+For an **apex custom domain** (e.g. `https://clinrs.ai/` only), remove the `BASE_PATH` env from the workflow’s build step and redeploy so the export uses no base path. Keep `metadataBase` in `app/layout.tsx` aligned with your public URL for SEO.
 
 ## Configuration and secrets
 
