@@ -63,7 +63,7 @@ The dev server listens on **port 3001** ([http://localhost:3001](http://localhos
 **One-time setup in the repository:**
 
 1. **Settings → Pages → Build and deployment** — set **Source** to **GitHub Actions** (not “Deploy from a branch”).
-2. Push to **`main`** or **`develop`** (or run the workflow manually under **Actions**) to trigger a deploy.
+2. Push to **`main`** (or run the workflow manually under **Actions**) to trigger a deploy.
 3. After the first successful run, open **Settings → Pages** again for the public URL. Add a **Custom domain** (e.g. `clinrs.ai`) and enable **HTTPS** when DNS is ready.
 
 The site is built for the **domain root** (no `basePath`); `metadataBase` in `app/layout.tsx` should stay `https://clinrs.ai` for production SEO.
