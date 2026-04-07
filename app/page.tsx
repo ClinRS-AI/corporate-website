@@ -1,6 +1,7 @@
 import BannerSection from "../components/BannerSection";
 import SpotlightSection from "../components/SpotlightSection";
 import ContactSection from "../components/ContactSection";
+import { assetPath } from "../lib/assetPath";
 
 export default function HomePage() {
   return (
@@ -11,7 +12,7 @@ export default function HomePage() {
         id="digital-toolkit"
         align="bottom"
         accent="sky"
-        background="url('/images/patient-centric-design-gemini.png') center/cover no-repeat"
+        background={`url('${assetPath("/images/patient-centric-design-gemini.png")}') center/cover no-repeat`}
         title="The Digital Toolkit"
         description="A growing SaaS platform purpose-built for clinical research sites — giving teams and patients the tools they need in one place."
         columns={[
@@ -37,7 +38,7 @@ export default function HomePage() {
         id="custom-development"
         align="right"
         accent="emerald"
-        background="url('/images/security-core-gemini.png') center/cover no-repeat"
+        background={`url('${assetPath("/images/security-core-gemini.png")}') center/cover no-repeat`}
         title="Custom Development"
         description="Need something built to fit your site's exact workflow? We design and develop custom software for clinical research — from standalone tools to full system integrations."
         bullets={[
@@ -52,7 +53,7 @@ export default function HomePage() {
         id="consulting"
         align="left"
         accent="indigo"
-        background="url('/images/ai-productivity-gemini.png') center/cover no-repeat"
+        background={`url('${assetPath("/images/ai-productivity-gemini.png")}') center/cover no-repeat`}
         title="Technology & Software Consulting"
         description="Tap into 20 years of SaaS development and IT experience in health sciences — from strategic planning to hands-on implementation guidance."
         bullets={[

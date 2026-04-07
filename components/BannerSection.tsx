@@ -4,13 +4,15 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 
+import { assetPath } from "../lib/assetPath";
+
 export default function BannerSection() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background image with dark overlay */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: "url('/images/banner.jpg')" }}
+        style={{ backgroundImage: `url('${assetPath("/images/banner.jpg")}')` }}
         aria-hidden="true"
       />
       <div
@@ -33,7 +35,7 @@ export default function BannerSection() {
         <div className="flex justify-center mb-8">
           <div className="rounded-full bg-gradient-to-br from-white to-sky-50 p-10 shadow-2xl ring-1 ring-sky-100/60">
             <Image
-              src="/logo.svg"
+              src={assetPath("/logo.svg")}
               alt="ClinRS AI logo"
               width={220}
               height={190}
