@@ -1,7 +1,6 @@
 /**
- * Public-folder URLs. When `BASE_PATH` is set at build time (GitHub project Pages:
- * `https://org.github.io/repo/`), `NEXT_PUBLIC_BASE_PATH` must match so `/images/...`
- * resolves under `/repo/`. For apex domains (e.g. https://clinrs.ai/) leave unset.
+ * Public-folder URLs. With no `BASE_PATH` (custom domain), paths stay `/images/...`.
+ * When `BASE_PATH=/repo` for a GitHub.io project-site build, URLs become `/repo/images/...`.
  */
 export function assetPath(path: string): string {
   const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";

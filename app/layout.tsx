@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   },
   description:
     "ClinRS AI supports clinical research teams with streamlined tooling and better patient experiences.",
-  metadataBase: new URL("https://clinrs.ai"),
+  metadataBase: new URL("https://www.clinrs.ai"),
   openGraph: {
     type: "website",
     title: "ClinRS AI",
