@@ -38,7 +38,7 @@ npm install
 npm run dev
 ```
 
-The dev server listens on **port 3000** ([http://localhost:3000](http://localhost:3000)).
+The dev server listens on **port 3001** ([http://localhost:3001](http://localhost:3001)).
 
 ## Scripts
 
@@ -65,21 +65,15 @@ The dev server listens on **port 3000** ([http://localhost:3000](http://localhos
 
 ### Source code
 
-The application **source code in this repository** is licensed under the [MIT License](LICENSE). That is a common choice for permissive open-source publishing: others may use, copy, modify, and redistribute the code, including commercially, if they keep the copyright notice and license text.
+The application **source code in this repository** is licensed under the [MIT License](LICENSE).
 
 `"private": true` in `package.json` only means the package is **not published to the npm registry**; it does not restrict making the GitHub repository public.
 
 ### Trademarks and branding
 
-The **MIT License applies to the code**, not to your company name, product name, or logos. Third parties who reuse the code **must not** imply your endorsement or confuse their product with ClinRS AI. **ClinRS AI**, **ClinRS**, and related marks may be trademarks of ClinRS Software LLC; register or police them according to your counsel’s advice.
+The **MIT License applies to the code**, not to the ClinRS AI company name, product name, or logos. Third parties who reuse the code **must not** imply your endorsement or confuse their product with ClinRS AI. **ClinRS AI**, **ClinRS**, and related marks may be trademarks of ClinRS Software LLC;
 
 ### Third-party and generated assets
 
 - **npm dependencies** (Next.js, React, etc.) are licensed under their own terms; see each package’s `LICENSE` under `node_modules/` after install.
-- **Images** you created with **Google Gemini** (or other Google AI tools) are **not** covered by the MIT license above. Use and redistribution of those images must follow **Google’s applicable terms** for the product you used (for example [Google Terms of Service](https://policies.google.com/terms) and the terms for [Gemini / Google AI](https://ai.google.dev/gemini-api/terms) or consumer Gemini apps, as applicable). Google’s terms can change; **review the current version** before you publish. If you redistribute Gemini-generated images, document in this README (or a `NOTICE` file) that they were produced with Gemini and that users are responsible for complying with Google’s policies.
-
-### What was checked
-
-A quick scan of tracked source files did not show API keys or embedded secrets. Before flipping the repo to **public**, run your usual secret scan (e.g. [Gitleaks](https://github.com/gitleaks/gitleaks) in CI), review `public/` for assets you have rights to ship, and have counsel confirm trademark and export rules if this is a regulated industry.
-
-*This section is for practical orientation only and is not legal advice.*
+- **Images** created with **Google Gemini** are **not** covered by the MIT license above. Use and redistribution of those images must follow **Google’s applicable terms** for the product you used (for example [Google Terms of Service](https://policies.google.com/terms) and the terms for [Gemini / Google AI](https://ai.google.dev/gemini-api/terms) or consumer Gemini apps, as applicable). Google’s terms can change; **review the current version** before you publish.
