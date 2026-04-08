@@ -14,7 +14,7 @@ export default function HomePage() {
         accent="sky"
         background={`url('${assetPath("/images/patient-centric-design-gemini.png")}') center/cover no-repeat`}
         title="The Digital Toolkit"
-        description="A growing SaaS platform purpose-built for clinical research sites — giving teams and patients the tools they need in one place."
+        description="A growing SaaS platform purpose-built for clinical research — giving teams and patients the tools they need in one place."
         columns={[
           {
             title: "Patient Portal",
@@ -40,7 +40,7 @@ export default function HomePage() {
         accent="emerald"
         background={`url('${assetPath("/images/security-core-gemini.png")}') center/cover no-repeat`}
         title="Custom Development"
-        description="Need something built to fit your site's exact workflow? We design and develop custom software for clinical research — from standalone tools to full system integrations."
+        description="Need something built to fit your organization's exact workflow? We design and develop custom software for clinical research — from standalone tools to full system integrations."
         bullets={[
           { text: "Standalone applications for your existing infrastructure" },
           { text: "Workflow tools that improve day-to-day research operations" },
