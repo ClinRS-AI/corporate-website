@@ -6,7 +6,10 @@ import Link from "next/link";
 import { assetPath } from "../lib/assetPath";
 import { AnimatePresence, motion } from "framer-motion";
 
-const navLinks = [{ label: "Home", href: "/" }];
+const navLinks = [
+  { label: "Home", href: "/" },
+  { label: "Articles", href: "/articles/from-skeptic-to-convert/" },
+];
 
 /** SVG wordmark: use native img so Next/Image wrapper does not fight SVG sizing (dev warning). */
 function WordmarkLogo({ priority }: { priority?: boolean }) {
