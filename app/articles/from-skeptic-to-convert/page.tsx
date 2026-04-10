@@ -68,6 +68,7 @@ export default function ArticlePage() {
         </p>
         <p className="text-sm text-slate-500 font-light">
           By Jon Sinclair &nbsp;&middot;&nbsp; Founder, ClinRS AI &nbsp;&middot;&nbsp; Former VP of Engineering, Advarra
+          &nbsp;&middot;&nbsp; <time dateTime="2026-04-10">April 10, 2026</time>
         </p>
       </header>
 
