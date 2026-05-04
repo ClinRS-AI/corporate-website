@@ -247,7 +247,7 @@ export default function ArticlePage() {
           <p>
             Let&apos;s be clear: this isn&apos;t vibe coding. I really appreciated the perspective shared by Simon Willison on a&nbsp;
             <a href="https://simonwillison.net/2026/Apr/2/lennys-podcast/" className="text-sky-400 underline underline-offset-2 hover:text-sky-300 transition-colors duration-200" target="_blank" rel="noopener noreferrer">recent Lenny&apos;s Podcast</a>, which perfectly 
-            captures how I fee which I&apos;ll summarize here by stating: &quot;Vibe coding&quot; is a fantastic way for people to build cool-looking things quickly without 
+            captures how I feel which I&apos;ll summarize here by stating: &quot;Vibe coding&quot; is a fantastic way for people to build cool-looking things quickly without 
             reviewing the code. Simon uses the term <b>agentic engineering</b> to describe when a professional software 
             engineer uses tools to move quickly while retaining a deep understanding of the code 
             and the overall project. I think this is a hugely important distinction.
