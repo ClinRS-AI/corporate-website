@@ -31,5 +31,9 @@ Desktop.ini
 # Test coverage (when you add a test runner)
 coverage/
 
+# Playwright (local HTML report, traces, failures — can include page snapshots)
+playwright-report/
+test-results/
+
 # Local TLS / key material (never commit real secrets)
 *.pem

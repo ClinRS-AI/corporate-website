@@ -49,7 +49,7 @@ export default function ArticlePage() {
           href="/"
           className="text-sm text-slate-400 hover:text-sky-400 transition-colors duration-200 inline-flex items-center gap-1"
         >
-          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 19l-7-7 7-7" />
           </svg>
           Back to home
@@ -66,7 +66,7 @@ export default function ArticlePage() {
           A veteran technology executive reflects on leaving corporate life, building a product from scratch with AI tools,
           and why the &ldquo;human&nbsp;+&nbsp;AI&rdquo; model isn&apos;t hype &mdash; it&apos;s the new baseline.
         </p>
-        <p className="text-sm text-slate-500 font-light">
+        <p className="text-sm text-slate-400 font-light">
           By Jon Sinclair &nbsp;&middot;&nbsp; Founder, ClinRS AI &nbsp;&middot;&nbsp; Former VP of Engineering, Advarra
           &nbsp;&middot;&nbsp; <time dateTime="2026-04-10">April 10, 2026</time>
         </p>
@@ -187,8 +187,12 @@ export default function ArticlePage() {
             <table className="w-full text-sm text-left">
               <thead>
                 <tr className="border-b border-slate-800">
-                  <th className="px-5 py-3 font-normal text-slate-400 bg-slate-900 w-1/2">Before GenAI</th>
-                  <th className="px-5 py-3 font-normal text-sky-400 bg-slate-900 w-1/2">With GenAI (human-piloted)</th>
+                  <th scope="col" className="px-5 py-3 font-normal text-slate-400 bg-slate-900 w-1/2">
+                    Before GenAI
+                  </th>
+                  <th scope="col" className="px-5 py-3 font-normal text-sky-400 bg-slate-900 w-1/2">
+                    With GenAI (human-piloted)
+                  </th>
                 </tr>
               </thead>
               <tbody>
@@ -248,7 +252,7 @@ export default function ArticlePage() {
             Let&apos;s be clear: this isn&apos;t vibe coding. I really appreciated the perspective shared by Simon Willison on a&nbsp;
             <a href="https://simonwillison.net/2026/Apr/2/lennys-podcast/" className="text-sky-400 underline underline-offset-2 hover:text-sky-300 transition-colors duration-200" target="_blank" rel="noopener noreferrer">recent Lenny&apos;s Podcast</a>, which perfectly 
             captures how I feel which I&apos;ll summarize here by stating: &quot;Vibe coding&quot; is a fantastic way for people to build cool-looking things quickly without 
-            reviewing the code. Simon uses the term <b>agentic engineering</b> to describe when a professional software 
+            reviewing the code. Simon uses the term <strong>agentic engineering</strong> to describe when a professional software 
             engineer uses tools to move quickly while retaining a deep understanding of the code 
             and the overall project. I think this is a hugely important distinction.
           </p>
@@ -321,13 +325,5 @@ function PullQuote({ children }: { children: React.ReactNode }) {
     <blockquote className="my-8 pl-5 border-l-2 border-sky-500 text-slate-300 font-light leading-relaxed italic text-base sm:text-lg">
       {children}
     </blockquote>
-  );
-}
-
-function ItalicQuote({ children }: { children: React.ReactNode }) {
-  return (
-    <p className="my-6 text-slate-300 font-light leading-relaxed italic text-sm sm:text-base">
-      {children}
-    </p>
   );
 }

@@ -1,15 +1,20 @@
 "use client";
 
-import { useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 
 import { assetPath } from "../lib/assetPath";
 import { AnimatePresence, motion } from "framer-motion";
 
+import { usePrefersReducedMotion } from "../lib/usePrefersReducedMotion";
+
+// When multiple articles ship, switch the Articles destination to `/articles/`.
 const navLinks = [
   { label: "Home", href: "/" },
   { label: "Articles", href: "/articles/from-skeptic-to-convert/" },
 ];
+
+const DRAWER_FOCUSABLE_SELECTOR = 'a[href], button:not([disabled])';
 
 /** SVG wordmark: use native img so Next/Image wrapper does not fight SVG sizing (dev warning). */
 function WordmarkLogo({ priority }: { priority?: boolean }) {
@@ -29,6 +34,76 @@ function WordmarkLogo({ priority }: { priority?: boolean }) {
 
 export default function SiteHeader() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const openBtnRef = useRef<HTMLButtonElement>(null);
+  const closeBtnRef = useRef<HTMLButtonElement>(null);
+  const drawerRef = useRef<HTMLDivElement>(null);
+
+  const prefersReducedMotion = usePrefersReducedMotion();
+  const drawerTransition = prefersReducedMotion
+    ? { duration: 0 }
+    : { type: "tween" as const, duration: 0.3 };
+
+  const closeMenu = useCallback(() => {
+    setMenuOpen(false);
+    requestAnimationFrame(() => {
+      openBtnRef.current?.focus({ preventScroll: true });
+    });
+  }, []);
+
+  const openMenu = useCallback(() => {
+    setMenuOpen(true);
+  }, []);
+
+  useEffect(() => {
+    if (!menuOpen) return;
+    const frame = requestAnimationFrame(() => {
+      closeBtnRef.current?.focus({ preventScroll: true });
+    });
+    return () => cancelAnimationFrame(frame);
+  }, [menuOpen]);
+
+  useEffect(() => {
+    if (!menuOpen) return;
+
+    function drawerFocusables(): HTMLElement[] {
+      const root = drawerRef.current;
+      if (!root) return [];
+      return [...root.querySelectorAll<HTMLElement>(DRAWER_FOCUSABLE_SELECTOR)].filter((el) => root.contains(el));
+    }
+
+    function onDocKeyDown(e: KeyboardEvent) {
+      const root = drawerRef.current;
+      if (!root) return;
+
+      if (e.key === "Escape") {
+        e.preventDefault();
+        closeMenu();
+        return;
+      }
+
+      if (e.key !== "Tab") return;
+
+      const focusables = drawerFocusables();
+      if (focusables.length === 0) return;
+
+      const first = focusables[0];
+      const last = focusables[focusables.length - 1];
+      const active = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+
+      if (e.shiftKey) {
+        if (active === first || !active || !root.contains(active)) {
+          e.preventDefault();
+          last.focus({ preventScroll: true });
+        }
+      } else if (active === last) {
+        e.preventDefault();
+        first.focus({ preventScroll: true });
+      }
+    }
+
+    document.addEventListener("keydown", onDocKeyDown);
+    return () => document.removeEventListener("keydown", onDocKeyDown);
+  }, [menuOpen, closeMenu]);
 
   return (
     <>
@@ -38,7 +113,7 @@ export default function SiteHeader() {
         </Link>
 
         {/* Desktop nav */}
-        <nav className="hidden sm:flex items-center gap-6">
+        <nav className="hidden sm:flex items-center gap-6" aria-label="Primary">
           {navLinks.map((link) => (
             <Link
               key={link.href}
@@ -58,11 +133,16 @@ export default function SiteHeader() {
 
         {/* Mobile hamburger */}
         <button
+          ref={openBtnRef}
+          type="button"
           className="sm:hidden text-slate-300 hover:text-white p-1"
-          onClick={() => setMenuOpen(true)}
+          onClick={openMenu}
           aria-label="Open menu"
+          aria-expanded={menuOpen}
+          aria-haspopup="dialog"
+          aria-controls={menuOpen ? "mobile-nav-drawer" : undefined}
         >
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
           </svg>
         </button>
@@ -77,34 +157,43 @@ export default function SiteHeader() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              onClick={() => setMenuOpen(false)}
+              transition={drawerTransition}
+              onClick={() => closeMenu()}
+              aria-hidden="true"
             />
-            <motion.nav
+            <motion.div
+              ref={drawerRef}
+              id="mobile-nav-drawer"
+              role="dialog"
+              aria-modal="true"
+              aria-label="Site navigation"
               className="fixed top-0 left-0 bottom-0 z-50 w-72 bg-slate-900 border-r border-slate-800 flex flex-col p-8 gap-6"
               initial={{ x: "-100%" }}
               animate={{ x: 0 }}
               exit={{ x: "-100%" }}
-              transition={{ type: "tween", duration: 0.3 }}
+              transition={drawerTransition}
             >
               <button
+                ref={closeBtnRef}
+                type="button"
                 className="self-end text-slate-400 hover:text-white transition-colors"
-                onClick={() => setMenuOpen(false)}
+                onClick={() => closeMenu()}
                 aria-label="Close menu"
               >
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
 
               <WordmarkLogo />
 
-              <div className="flex flex-col gap-4">
+              <nav aria-label="Mobile" className="flex flex-col gap-4">
                 {navLinks.map((link) => (
                   <Link
                     key={link.href}
                     href={link.href}
                     className="text-slate-300 hover:text-sky-400 font-light transition-colors duration-200"
-                    onClick={() => setMenuOpen(false)}
+                    onClick={() => closeMenu()}
                   >
                     {link.label}
                   </Link>
@@ -112,12 +201,12 @@ export default function SiteHeader() {
                 <Link
                   href="#contact"
                   className="mt-2 px-4 py-2 text-center rounded border border-sky-600 text-sky-400 hover:bg-sky-600 hover:text-white transition-colors duration-200 font-light"
-                  onClick={() => setMenuOpen(false)}
+                  onClick={() => closeMenu()}
                 >
                   Get in touch
                 </Link>
-              </div>
-            </motion.nav>
+              </nav>
+            </motion.div>
           </>
         )}
       </AnimatePresence>

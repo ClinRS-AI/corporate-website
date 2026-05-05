@@ -11,7 +11,7 @@
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "test:a11y:e2e": "playwright test",
     "test:a11y:components": "jest --config jest.config.mjs --runInBand",
-    "test:quality": "npm run lint && npm run typecheck && npm run test:a11y:e2e && npm run test:a11y:components"
+    "test:quality": "npm run lint && npm run typecheck && npm run test:a11y:components && npm run test:a11y:e2e"
   },
   "keywords": [],
   "author": "",

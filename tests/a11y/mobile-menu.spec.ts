@@ -9,7 +9,7 @@ test("mobile drawer state has no detectable WCAG issues", async ({ page, browser
 
   await page.getByRole("button", { name: "Open menu" }).click();
 
-  const menu = page.locator("nav").filter({ hasText: "Get in touch" }).first();
+  const menu = page.locator("#mobile-nav-drawer");
   await expect(menu).toBeVisible();
 
   const accessibilityScanResults = await new AxeBuilder({ page }).analyze();

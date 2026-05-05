@@ -35,6 +35,17 @@ Use this checklist before merging major UI or content changes.
 
 ## 5) Motion and reduced-motion preferences
 
+Built-in behavior when the OS/browser reports **prefers reduced motion** (`prefers-reduced-motion: reduce`):
+
+- **Global CSS:** smooth scrolling is turned off (`scroll-behavior: auto` on `html`).
+- **Banner:** hero fade-in and the bouncing scroll chevron are disabled.
+- **Spotlight sections:** parallax movement and scale on background imagery are disabled; panel entrance uses an instant transition when they enter the viewport.
+- **Mobile nav:** overlay and drawer open/close use zero-duration motion (no slide/fade animation).
+
+JavaScript-driven reduced motion uses React `useSyncExternalStore` with a **server snapshot of `false`**, so the first paint matches SSR; after hydration the real `prefers-reduced-motion` value applies. Global `prefers-reduced-motion` CSS still applies immediately for scroll behavior.
+
+Manual checks:
+
 - [ ] Enable reduced-motion at OS/browser level and verify motion-heavy sections reduce animation.
 - [ ] Ensure no essential information is conveyed only through animation.
 
