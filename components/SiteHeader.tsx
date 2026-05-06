@@ -8,10 +8,9 @@ import { AnimatePresence, motion } from "framer-motion";
 
 import { usePrefersReducedMotion } from "../lib/usePrefersReducedMotion";
 
-// When multiple articles ship, switch the Articles destination to `/articles/`.
 const navLinks = [
   { label: "Home", href: "/" },
-  { label: "Articles", href: "/articles/from-skeptic-to-convert/" },
+  { label: "Articles", href: "/articles/" },
 ];
 
 const DRAWER_FOCUSABLE_SELECTOR = 'a[href], button:not([disabled])';

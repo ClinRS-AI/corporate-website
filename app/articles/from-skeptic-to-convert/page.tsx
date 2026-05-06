@@ -46,13 +46,13 @@ export default function ArticlePage() {
       {/* Back link */}
       <div className="mb-10">
         <Link
-          href="/"
+          href="/articles/"
           className="text-sm text-slate-400 hover:text-sky-400 transition-colors duration-200 inline-flex items-center gap-1"
         >
           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 19l-7-7 7-7" />
           </svg>
-          Back to home
+          Back to articles
         </Link>
       </div>
 
