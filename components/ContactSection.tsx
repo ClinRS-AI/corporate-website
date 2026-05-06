@@ -22,12 +22,12 @@ export default function ContactSection() {
         </a>
 
         <div className="mt-16 flex flex-col gap-4 border-t border-slate-800 pt-6 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-xs text-slate-600 font-light">
+          <p className="text-xs text-slate-400 font-light">
             Copyright &copy; {new Date().getFullYear()} ClinRS Software LLC. All rights reserved.
           </p>
           <a
-            href="#"
-            className="text-xs font-light text-slate-500 hover:text-slate-200 hover:underline transition-colors duration-200"
+            href="#site-top"
+            className="text-xs font-light text-slate-300 hover:text-slate-100 hover:underline transition-colors duration-200"
           >
             Back to top
           </a>

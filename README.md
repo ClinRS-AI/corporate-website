@@ -49,6 +49,18 @@ The dev server listens on **port 3001** ([http://localhost:3001](http://localhos
 | `npm start` | Preview the `out/` folder locally (static server on port 3001; run after `npm run build`) |
 | `npm run lint` | ESLint across the project |
 | `npm run typecheck` | TypeScript check (`tsc --noEmit`) |
+| `npm run test:a11y:components` | Component accessibility checks with Jest + jest-axe |
+| `npm run test:a11y:e2e` | Route and interaction accessibility checks with Playwright + axe-core |
+| `npm run test:quality` | Full quality gate (`lint`, `typecheck`, and accessibility tests) |
+
+## Accessibility standard and workflow
+
+- This project targets **WCAG 2.2 AA** as the baseline standard.
+- Automated tests run in CI and should be run locally before major UI or content changes:
+  - `npm run test:a11y:components`
+  - `npm run test:a11y:e2e`
+- Manual accessibility checks are required because automation does not fully cover keyboard UX, focus behavior, motion sensitivity, and screen reader quality.
+- Use [`docs/accessibility-checklist.md`](docs/accessibility-checklist.md) before merging major changes.
 
 ## Continuous integration
 
@@ -72,10 +84,29 @@ The default **project** URL `https://<org>.github.io/<repo>/` expects files unde
 
 Keep **`metadataBase`** in `app/layout.tsx` aligned with your canonical hostname (www vs apex) for SEO and Open Graph URLs.
 
+### Quality gate
+
+[.github/workflows/quality.yml](.github/workflows/quality.yml) runs on pull requests and enforces:
+
+- `npm run lint`
+- `npm run typecheck`
+- `npm run test:a11y:components`
+- `npm run test:a11y:e2e`
+
+If Playwright tests fail, the workflow uploads a test report artifact for debugging.
+
 ## Configuration and secrets
 
 - Do **not** commit API keys, tokens, or `.env` files with real values. Ignored patterns include `.env`, `.env.local`, and `.env.*.local` (see [`.gitignore`](.gitignore)).
 - Site URL and sharing metadata are set in `app/layout.tsx` (`metadataBase`, Open Graph).
+
+## Accessibility Definition of Done (major changes)
+
+For major UI/content changes, a PR is ready to merge only when:
+
+1. The quality workflow passes (`lint`, `typecheck`, component a11y tests, E2E a11y tests).
+2. The manual checklist in [`docs/accessibility-checklist.md`](docs/accessibility-checklist.md) is completed.
+3. Any unavoidable accessibility issues are documented with a follow-up issue and remediation date.
 
 ## License
 

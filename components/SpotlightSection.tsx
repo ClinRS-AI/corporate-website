@@ -3,6 +3,8 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform, useInView } from "framer-motion";
 
+import { usePrefersReducedMotion } from "../lib/usePrefersReducedMotion";
+
 type Align = "left" | "right" | "bottom";
 type Accent = "sky" | "emerald" | "indigo";
 
@@ -55,13 +57,14 @@ export default function SpotlightSection({
 }: SpotlightSectionProps) {
   const sectionRef = useRef<HTMLElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
+  const prefersReducedMotion = usePrefersReducedMotion();
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start end", "end start"],
   });
 
-  // Parallax: background drifts at ~20% of scroll speed
+  // Parallax: background drifts at ~20% of scroll speed (disabled when user prefers reduced motion)
   const bgY = useTransform(scrollYProgress, [0, 1], ["-15%", "15%"]);
   // Subtle scale pulse as section passes through view
   const bgScale = useTransform(scrollYProgress, [0, 0.5, 1], [1.06, 1.0, 1.06]);
@@ -78,14 +81,22 @@ export default function SpotlightSection({
   const animateAnim =
     align === "bottom" ? { opacity: 1, y: 0 } : { opacity: 1, x: 0 };
 
+  const contentTransition = prefersReducedMotion
+    ? { duration: 0 }
+    : { duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] as const };
+
   return (
     <section id={id} ref={sectionRef} className="relative min-h-screen overflow-hidden">
-      {/* Parallax background */}
-      <motion.div
-        aria-hidden="true"
-        style={{ y: bgY, scale: bgScale, background }}
-        className="absolute inset-[-20%]"
-      />
+      {/* Parallax background (static when user prefers reduced motion) */}
+      {prefersReducedMotion ? (
+        <div aria-hidden="true" className="absolute inset-[-20%]" style={{ background }} />
+      ) : (
+        <motion.div
+          aria-hidden="true"
+          style={{ y: bgY, scale: bgScale, background }}
+          className="absolute inset-[-20%]"
+        />
+      )}
       {/* Dark overlay */}
       <div aria-hidden="true" className="absolute inset-0 bg-slate-950/50" />
 
@@ -95,7 +106,7 @@ export default function SpotlightSection({
           ref={contentRef}
           initial={initialAnim}
           animate={isInView ? animateAnim : {}}
-          transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
+          transition={contentTransition}
           className="absolute bottom-0 left-0 right-0 bg-slate-900/90 backdrop-blur-sm border-t border-slate-700/40 px-8 py-14"
         >
           <div className={`border-l-4 pl-5 mb-8 ${accentBorder[accent]}`}>
@@ -105,7 +116,7 @@ export default function SpotlightSection({
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {columns.map((col) => (
               <div key={col.title}>
-                <h4 className="text-base font-normal text-slate-200 mb-2">{col.title}</h4>
+                <h3 className="text-base font-normal text-slate-200 mb-2">{col.title}</h3>
                 <p className="text-base text-slate-400 font-light">{col.description}</p>
               </div>
             ))}
@@ -117,7 +128,7 @@ export default function SpotlightSection({
           ref={contentRef}
           initial={initialAnim}
           animate={isInView ? animateAnim : {}}
-          transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
+          transition={contentTransition}
           className={`absolute top-0 bottom-0 ${
             align === "right" ? "right-0" : "left-0"
           } w-full sm:w-2/5 bg-slate-900/90 backdrop-blur-sm flex items-center px-8 py-20`}
