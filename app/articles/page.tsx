@@ -11,8 +11,8 @@ const articles = [
   {
     href: "/articles/deep-dive-testing-genai/",
     title: "Testing in the Age of GenAI: Why the Pyramid Still Matters (But the Timeline Changed)",
-    dateISO: "2026-05-06",
-    dateLabel: "May 6, 2026",
+    dateISO: "2026-05-07",
+    dateLabel: "May 7, 2026",
   },
   {
     href: "/articles/from-skeptic-to-convert/",
