@@ -94,7 +94,7 @@ export default function ArticlePage() {
             >
               building ClinRS with generative AI
             </Link>
-            , I heard similar questions from at least three different people in my network:{" "}
+            , I heard similar questions from a few different people in my network:{" "}
             <em>
               &ldquo;What about testing? Where do they fit with the changing model?&rdquo;
             </em>
@@ -177,7 +177,7 @@ export default function ArticlePage() {
             If a third-party system has a public-facing API &mdash; whether documented via Swagger, OpenAPI, or any
             other public specification &mdash; tools like Cursor or Claude can access that documentation and generate a
             fully functional mock backend in a fraction of the time it used to take. The mock persists data, responds
-            correctly to API calls, and gives me a realistic integration testing harness without needing access to the
+            correctly to API calls, and provides a realistic integration testing harness without needing access to the
             actual system.
           </p>
           <p>
@@ -187,9 +187,11 @@ export default function ArticlePage() {
             clearly defined.
           </p>
           <PullQuote>
-            This is a great place to start for engineers who want to build something useful with generative AI that is
-            relatively low-risk. Mock systems use fake data, and if you miss something in a mock you will hopefully come
-            across it in end-to-end testing prior to launch.
+            Honestly, this is a great place to start for engineers who want to build something useful with generative AI
+            that is relatively low-risk. Mock systems use fake data (no PHI or confidentiality exposure risk), and if
+            you miss something in a mock you will hopefully come across it in end-to-end (e2e) testing prior to launch.
+            Just make sure you use the information for what you find in e2e testing to improve your mock for the next
+            time.
           </PullQuote>
           <p>
             The result: higher fidelity integration tests, maintained more easily, at a fraction of the cost. This is a
@@ -231,7 +233,16 @@ export default function ArticlePage() {
           </p>
           <p>
             There are a number of solid libraries out there to assist teams in ensuring their applications are
-            compliant. I implemented{" "}
+            compliant. One that I came across recently is from{" "}
+            <a
+              href="https://deque.com/axe/"
+              className="text-sky-400 underline underline-offset-2 hover:text-sky-300 transition-colors duration-200"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              axe
+            </a>
+            . I implemented{" "}
             <a
               href="https://github.com/dequelabs/axe-core"
               className="text-sky-400 underline underline-offset-2 hover:text-sky-300 transition-colors duration-200"
@@ -247,16 +258,17 @@ export default function ArticlePage() {
             audit.
           </p>
           <p>
-            What they don&apos;t do is cover everything. Automated tools are only as good as what they&apos;re designed
+            What it doesn&apos;t do is cover everything. Automated tools are only as good as what they&apos;re designed
             to check &mdash; and experienced engineers know there&apos;s often a gap between what&apos;s technically
             flagged and what&apos;s actually the right thing to do for your users. Knowing that the automated tools have
             a ceiling, I had GenAI generate a manual review checklist to supplement them &mdash; a structured set of
-            checks covering the scenarios the automated tools can&apos;t evaluate. That checklist runs after the
-            automated pass and fills in the gaps.
+            checks covering the scenarios the automated tools can&apos;t evaluate. That checklist is meant to be run
+            after the automated pass to fill in the gaps.
           </p>
           <p>
             To give a tangible example, I&apos;ll point to the option <code className="text-sky-300 text-sm bg-slate-800 px-1.5 py-0.5 rounded">prefers-reduced-motion</code>. It wasn&apos;t
-            flagged by axe, and correctly so &mdash; it isn&apos;t a requirement under WCAG AA compliance. But it
+            flagged by axe, and correctly so &mdash; it isn&apos;t a requirement under WCAG AA compliance, which is the
+            target for Section 508 compliance. But it
             appeared on the manual checklist as a best practice consideration for users with motion sensitivity settings
             enabled in their browser. Recognizing it as a simple, meaningful improvement for my site, I had GenAI
             implement the CSS changes necessary to honor that browser preference and reduce unnecessary motion on the
@@ -266,7 +278,8 @@ export default function ArticlePage() {
           <PullQuote>
             Automated suites enforce the baseline continuously. A GenAI-generated manual checklist covers what
             automation can&apos;t. And human judgment &mdash; informed by domain knowledge and genuine care for the end
-            user &mdash; decides what&apos;s worth acting on.
+            user &mdash; decides what&apos;s worth acting on. Together, they&apos;re far better than the alternative,
+            which for most teams is a compliance gap that only shows up when someone complains or an auditor arrives.
           </PullQuote>
           <p>
             GenAI makes all three layers practical. Setting up the automated suites, generating the manual checklist,
