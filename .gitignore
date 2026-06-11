@@ -21,6 +21,7 @@ Desktop.ini
 
 # Claude Code — local overrides (machine-specific; may include secrets)
 .claude/settings.local.json
+.claude/settings.json
 
 # Vercel CLI (project link, local project settings)
 .vercel
