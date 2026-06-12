@@ -17,6 +17,13 @@ export default function HomePage() {
         description="A growing SaaS platform purpose-built for clinical research — giving teams and patients the tools they need in one place."
         columns={[
           {
+            title: "Instant Notifications",
+            description:
+              "Automatically inform all other systems the moment data changes in your CTMS platform.",
+            href: "/products/echo-delta/",
+            linkLabel: "Explore Echo Delta",
+          },
+          {
             title: "Patient Portal",
             description:
               "A patient-facing portal for secure access to study information, upcoming visits, communication with research staff, and self-reported feedback.",
@@ -25,11 +32,6 @@ export default function HomePage() {
             title: "Patient Data Management",
             description:
               "Streamlined tools for managing patient data within CTMS solutions — reducing manual work and improving data accuracy across your organization.",
-          },
-          {
-            title: "Secure by Design",
-            description:
-              "Built with role-based access, least-privilege principles, and integration with existing identity providers so your data stays protected.",
           },
         ]}
       />

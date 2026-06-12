@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import Link from "next/link";
 import { motion, useScroll, useTransform, useInView } from "framer-motion";
 
 import { usePrefersReducedMotion } from "../lib/usePrefersReducedMotion";
@@ -11,6 +12,8 @@ type Accent = "sky" | "emerald" | "indigo";
 interface Column {
   title: string;
   description: string;
+  href?: string;
+  linkLabel?: string;
 }
 
 interface Bullet {
@@ -118,6 +121,14 @@ export default function SpotlightSection({
               <div key={col.title}>
                 <h3 className="text-base font-normal text-slate-200 mb-2">{col.title}</h3>
                 <p className="text-base text-slate-400 font-light">{col.description}</p>
+                {col.href && (
+                  <Link
+                    href={col.href}
+                    className="inline-block mt-3 text-sm text-sky-400 hover:text-sky-300 hover:underline underline-offset-2 transition-colors duration-200 font-light"
+                  >
+                    {col.linkLabel ?? "Learn more"} →
+                  </Link>
+                )}
               </div>
             ))}
           </div>
