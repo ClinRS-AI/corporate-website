@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 
 import ContactSection from "../../../components/ContactSection";
@@ -18,59 +19,28 @@ const features = [
   {
     title: "Event-Driven Architecture",
     description:
-      "Built around the event patterns that CTMS workflows actually produce — subject enrollments, visit completions, query resolutions, and more — so notifications are structured and meaningful, not just raw data dumps.",
-    placeholder: "Architecture diagram",
+      "Generates standard webhook outputs in response to events in your CTMS as they occur. Flexible authentication methods to support a variety of downstream systems.",
+    image: "/images/event-architecture-gemini-web.png",
   },
   {
     title: "Configurable Payloads",
     description:
       "Choose what each notification carries. Include full pre- and post-change data for downstream systems that need context, or send lightweight ID-only payloads for systems that fetch their own records.",
-    placeholder: "Configuration screenshot",
+    image: "/images/configurable-payloads-gemini-web.png",
   },
   {
     title: "Guaranteed Delivery",
     description:
       "Automatic retry on failure ensures no notification is silently dropped. Every event sent and every acknowledgment received is recorded, giving you a complete audit trail for compliance and debugging.",
-    placeholder: "Notification log screenshot",
+    image: "/images/guaranteed-delivery-gemini-web.png",
   },
 ];
 
 const conductorBullets = [
   "Supports additions, updates, and deletions of patient data",
-  "Include pre- and post-change data in notifications, or limit to IDs only",
-  "Simple configuration with hands-off ongoing management",
+  "Includes pre- and post-change data in notifications, or limits to IDs only",
+  "Simplifies configuration with hands-off ongoing management",
 ];
-
-function GraphicPlaceholder({
-  label,
-  className,
-}: {
-  label: string;
-  className?: string;
-}) {
-  return (
-    <div
-      className={`bg-slate-800/60 border border-slate-700/60 border-dashed rounded-lg flex flex-col items-center justify-center gap-2 ${className ?? ""}`}
-      aria-label={label}
-    >
-      <svg
-        className="w-8 h-8 text-slate-600"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-        aria-hidden="true"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={1}
-          d="M4 5a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1H5a1 1 0 01-1-1V5zm10 0a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1V5zM4 15a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1H5a1 1 0 01-1-1v-4zm10-1a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1v-4z"
-        />
-      </svg>
-      <span className="text-slate-500 text-xs font-light tracking-wide">{label}</span>
-    </div>
-  );
-}
 
 export default function EchoDeltaPage() {
   return (
@@ -106,7 +76,15 @@ export default function EchoDeltaPage() {
                 Get in touch
               </Link>
             </div>
-            <GraphicPlaceholder label="Product screenshot" className="h-72 lg:h-full min-h-[280px]" />
+            <div className="relative h-72 lg:h-full min-h-[280px] rounded-lg overflow-hidden border border-slate-700/60">
+              <Image
+                src="/images/echo-delta-home-screenshot.png"
+                alt="Echo Delta monitoring dashboard showing audit backlog, pending dispatches, errors, and patient snapshots"
+                fill
+                className="object-cover"
+                priority
+              />
+            </div>
           </div>
         </div>
       </section>
@@ -114,13 +92,21 @@ export default function EchoDeltaPage() {
       {/* Feature highlights */}
       <section className="py-16 border-b border-slate-800">
         <div className="max-w-5xl mx-auto px-8">
+          <h2 className="sr-only">Key Features</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {features.map((feature) => (
               <div
                 key={feature.title}
                 className="bg-slate-900 border border-slate-800 rounded-lg overflow-hidden flex flex-col"
               >
-                <GraphicPlaceholder label={feature.placeholder} className="aspect-video" />
+                <div className="relative aspect-video bg-slate-950">
+                  <Image
+                    src={feature.image}
+                    alt={feature.title}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
                 <div className="p-6 flex flex-col gap-2">
                   <h3 className="text-base font-normal text-slate-200">{feature.title}</h3>
                   <p className="text-sm text-slate-400 font-light leading-relaxed">
@@ -146,7 +132,8 @@ export default function EchoDeltaPage() {
                   Echo Delta launches with native support for Clinical Conductor — the CTMS used
                   by research teams who need accurate, real-time data across their technology
                   stack. Clinical Conductor is a powerful tool for managing clinical research
-                  data, but it lacks real-time notification capabilities for patient data.
+                  data, but it lacks real-time notification capabilities for patient data. Echo Delta
+                  enhances Clinical Conductor by providing these capabilities.
                 </p>
               </div>
               <ul className="space-y-3">
@@ -160,8 +147,20 @@ export default function EchoDeltaPage() {
                   </li>
                 ))}
               </ul>
+              <p className="text-xs text-slate-400 font-light leading-relaxed mt-8">
+                Clinical Conductor is a trademark of Bio-Optronics, Inc., now part of Advarra.
+                ClinRS AI and Echo Delta are not affiliated with, endorsed by, or sponsored by
+                Bio-Optronics or Advarra.
+              </p>
             </div>
-            <GraphicPlaceholder label="Product screenshot" className="aspect-[4/3] w-full" />
+            <div className="relative aspect-[4/3] w-full rounded-lg overflow-hidden border border-slate-700/60">
+              <Image
+                src="/images/nurse-computer-gemini-web.png"
+                alt="Clinical research nurse working at a computer"
+                fill
+                className="object-cover"
+              />
+            </div>
           </div>
         </div>
       </section>
@@ -172,11 +171,18 @@ export default function EchoDeltaPage() {
           <div className="border-l-4 border-indigo-400 pl-5 mb-10">
             <h2 className="text-3xl font-light text-slate-100 mb-3">How It Works</h2>
             <p className="text-base text-slate-400 font-light leading-relaxed max-w-2xl">
-              Echo Delta monitors the Clinical Conductor audit trail in near real-time, detecting
-              any changes to patient data and immediately triggering the appropriate notifications.
+              Echo Delta monitors the Clinical Conductor audit trail, detecting
+              any changes to patient data and triggering the appropriate notifications.
             </p>
           </div>
-          <GraphicPlaceholder label="Architecture diagram" className="aspect-[16/7] w-full" />
+          <div className="relative aspect-[16/7] w-full rounded-lg overflow-hidden border border-slate-700/60 bg-slate-900">
+            <Image
+              src="/images/echo-delta-architecture.png"
+              alt="Echo Delta architecture diagram"
+              fill
+              className="object-contain"
+            />
+          </div>
         </div>
       </section>
 

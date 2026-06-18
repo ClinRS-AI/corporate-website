@@ -21,7 +21,7 @@ export default function HomePage() {
             description:
               "Automatically inform all other systems the moment data changes in your CTMS platform.",
             href: "/products/echo-delta/",
-            linkLabel: "Explore Echo Delta",
+            linkLabel: "More Information",
           },
           {
             title: "Patient Portal",

@@ -6,6 +6,7 @@ const routesToTest = [
   "/articles/",
   "/articles/from-skeptic-to-convert/",
   "/articles/deep-dive-testing-genai/",
+  "/products/echo-delta/",
 ];
 
 for (const route of routesToTest) {
