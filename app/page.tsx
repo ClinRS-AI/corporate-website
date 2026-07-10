@@ -27,6 +27,8 @@ export default function HomePage() {
             title: "Patient Portal",
             description:
               "A patient-facing portal for secure access to study information, upcoming visits, communication with research staff, and self-reported feedback.",
+            href: "/products/patient-portal/",
+            linkLabel: "More Information",
           },
           {
             title: "Patient Data Management",
