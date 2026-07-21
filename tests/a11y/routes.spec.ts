@@ -4,6 +4,7 @@ import { test, expect } from "@playwright/test";
 const routesToTest = [
   "/",
   "/articles/",
+  "/articles/code-is-not-the-documentation/",
   "/articles/from-skeptic-to-convert/",
   "/articles/deep-dive-testing-genai/",
   "/products/echo-delta/",
