@@ -401,10 +401,10 @@ export default function ArticlePage() {
         {/* CTA Section */}
         <section className="mt-12 rounded border border-sky-900/50 bg-sky-950/20 px-8 py-10">
           <h3 className="text-xl font-light text-slate-100 tracking-wide mb-3">
-            This is what ClinRS is built to do
+            This is what ClinRS AI is built to do
           </h3>
           <p className="text-slate-400 font-light leading-relaxed mb-6">
-            ClinRS applies an AI-first engineering philosophy to help healthcare and life sciences companies build with
+            ClinRS AI applies an AI-first engineering philosophy to help healthcare and life sciences companies build with
             high influence and high impact &mdash; without the overhead of a traditional engineering build-out. Whether
             you need fractional CTO leadership, a technical partner for a specific build, or a strategic sounding board
             for your engineering roadmap, the model is the same: senior judgment, AI-amplified velocity,

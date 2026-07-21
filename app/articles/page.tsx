@@ -9,6 +9,12 @@ export const metadata: Metadata = {
 
 const articles = [
   {
+    href: "/articles/code-is-not-the-documentation/",
+    title: "Code Is Not the Documentation",
+    dateISO: "2026-07-21",
+    dateLabel: "July 21, 2026",
+  },
+  {
     href: "/articles/deep-dive-testing-genai/",
     title: "Testing in the Age of GenAI: Why the Pyramid Still Matters (But the Timeline Changed)",
     dateISO: "2026-05-07",
